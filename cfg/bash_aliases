@@ -2,5 +2,5 @@
 
 alias ll='ls -l'
 alias la='ls -lA'
-alias actualitzar='sudo apt update && sudo apt upgrade'
+alias sys_update='sudo apt update && sudo apt upgrade' # Only Debian based system suported at this time
 
