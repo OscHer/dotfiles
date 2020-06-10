@@ -10,5 +10,5 @@ if [ $(grep ID /etc/os-release | grep -E $RH_BASED_SYSTEM | wc -l) -gt 0 ]; then
 elif [  $(grep ID /etc/os-release | grep -E $DEBIAN_BASED_SYSTEM | wc -l) -gt 0 ]; then
   alias sys_update='sudo apt update && sudo apt upgrade'
 else
-  echo "Unknow package managment system"
+  echo "Unknown package management system"
 fi
