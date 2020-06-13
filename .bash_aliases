@@ -3,7 +3,7 @@ DEBIAN_BASED_SYSTEM="debian"
 
 alias ll='ls -l'
 alias la='ls -lA'
-
+alias br='sudo su -'
 
 if [ $(grep ID /etc/os-release | grep -E $RH_BASED_SYSTEM | wc -l) -gt 0 ]; then
   alias sys_update='sudo yum update'
