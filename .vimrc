@@ -14,6 +14,6 @@ set showmode
 colorscheme delek
 set cursorline
 set hls is
-:set tabstop=4
-:set shiftwidth=4
-:set expandtab
+set tabstop=4
+set shiftwidth=4
+set expandtab
