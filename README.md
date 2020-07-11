@@ -7,3 +7,6 @@ The main goal for this project consists in compiling my dotfiles for an easy imp
 * bash_alias
 * bash_prompt
 * vimrc
+
+### Vim
+Added suport for [Vim-plug](https://github.com/junegunn/vim-plug)
