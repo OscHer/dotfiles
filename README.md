@@ -6,4 +6,4 @@ The main goal for this project consists in compiling my dotfiles for an easy imp
 ## Files
 * bash_alias
 * bash_prompt
-* vimr
+* vimrc
