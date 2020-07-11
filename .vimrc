@@ -19,4 +19,15 @@ set shiftwidth=4
 set expandtab
 
 call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree'
+Plug 'morhetz/gruvbox'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
+
+" Themes
+colorscheme gruvbox
+let g:gruvbox_contrast_dark = "hard"
+
+" Keyboard shortcuts
+let mapleader=" " 
+nmap <Leader>nt :NERDTreeFind<CR>
