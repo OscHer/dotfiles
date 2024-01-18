@@ -8,6 +8,7 @@
 "di" :          Delete inside quote. More info: https://stackoverflow.com/questions/4619532/in-vim-how-do-i-delete-everything-within-the-double-quotes
 "gf :           Go to file. More info: https://stackoverflow.com/questions/916409/easily-open-include-filenames-in-vim
 "gd :           Go to local declaration.
+"gu :           Visual mode: toggle upper/lower case selected chars/lines.
 "zg :           Add to current spell list
 "<leader>t :    Open a vertical split terminal
 "<leader>cf     Create file under cursor
@@ -29,6 +30,8 @@
 " <C-s> <Plug>MarkdownPreview
 " <M-s> <Plug>MarkdownPreviewStop
 " <C-p> <Plug>MarkdownPreviewToggle
+
+
 
 
 "Vundle settings block {{{
