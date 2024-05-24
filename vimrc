@@ -59,6 +59,8 @@ Plugin 'heavenshell/vim-pydocstring'        "Make pydoc great again. https://git
 Plugin 'python-mode/python-mode'            "A bunch of cool features for python development. https://github.com/python-mode/python-mode https://www.youtube.com/watch?v=67OZNp9Z0CQ
 Plugin 'iamcco/markdown-preview.nvim'       "Creates a local webserver with markdown rendering in realtime. https://github.com/iamcco/markdown-preview.nvim
 Plugin 'ironcamel/vim-script-runner', {'for': ['sh', 'python']} "Executes a script on another buffer. https://atareao.es/tutorial/vim/bash-con-vim/
+Plugin 'tpope/vim-rhubarb'                  "When typing GBrowse in a git directory opens github project in your web browser. https://github.com/tpope/vim-rhubarb
+
 
 call vundle#end()
 filetype plugin indent on
