@@ -60,7 +60,7 @@ Plugin 'python-mode/python-mode'            "A bunch of cool features for python
 Plugin 'iamcco/markdown-preview.nvim'       "Creates a local webserver with markdown rendering in realtime. https://github.com/iamcco/markdown-preview.nvim
 Plugin 'ironcamel/vim-script-runner', {'for': ['sh', 'python']} "Executes a script on another buffer. https://atareao.es/tutorial/vim/bash-con-vim/
 Plugin 'tpope/vim-rhubarb'                  "When typing GBrowse in a git directory opens github project in your web browser. https://github.com/tpope/vim-rhubarb
-
+Plugin 'tibabit/vim-templates'              "Templates for code files with its placeholders and so on. https://github.com/tibabit/vim-templates
 
 call vundle#end()
 filetype plugin indent on
@@ -234,3 +234,7 @@ let g:mkdp_browser = '/usr/bin/firefox'
 " set to 1, echo preview page url in command line when open preview page
 " default is 0
 let g:mkdp_echo_preview_url = 0
+
+" vim-templates placeholder configuration 
+let g:tmpl_author_email = '65867332+OscHer@users.noreply.github.com'
+

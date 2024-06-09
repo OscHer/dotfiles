@@ -1,0 +1,26 @@
+/**
+ * @component   : {{FILEE}}
+ * @author      : {{NAME}} ({{EMAIL}})
+ * @created     : {{TIMESTAMP}}
+ * @description : {{FILEE}}
+ */
+
+import React, {Component}  from 'react'
+import PropTypes from 'prop-types'
+
+export default class {{FILEE}} extends Component {
+  static propTypes = {
+  }
+
+  static defaultProps = {
+  }
+
+  render() {
+    return (
+    <div>
+    {{CURSOR}}
+    </div>
+    )
+  }
+}
+
