@@ -31,4 +31,4 @@ $(TARGET): $(OBJ)
 .PHONY: all clean
 
 clean:
-	rm -f $(ODIR) $(TARGET)
+	rm -rf $(ODIR) $(TARGET)
