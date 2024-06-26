@@ -6,22 +6,29 @@
 
 IDIR =./include
 CC=gcc
-CFLAGS=-I$(IDIR)
-
+LDFLAGS=
+CFLAGS=-I$(IDIR) -Wall -g
 ODIR=obj
-
+TARGET=main
 LIBS=
-
 _OBJ = main.o {{CURSOR}}
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
-$(ODIR)/%.o: %.c
+# Predefined rule for complete execution
+all: $(TARGET)
+
+# Ensure Object Directory exists before compiling
+$(ODIR)/%.o: %.c | $(ODIR)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-main: $(OBJ)
+# Rule for creating Object Directory
+$(ODIR):
+	mkdir -p $(ODIR)
+
+$(TARGET): $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
-.PHONY: clean
+.PHONY: all clean
 
 clean:
-	rm -f $(ODIR)/*.o
+	rm -f $(ODIR) $(TARGET)
