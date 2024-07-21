@@ -11,3 +11,15 @@ Includes:
 * [spl files](https://vimdoc.sourceforge.net/htmldoc/spell.html)
 
 Note that despite this is a *dotfiles* repository, we won't be using '.' before any file.
+
+## Appendix
+
+### Roadmap
+
+* Ansible playbook to [treboform](https://github.com/OscHer/treboform) any VM.
+
+#### Maybe
+I haven't made up my mind yet about these features.
+
+* [Nerd fonts](https://www.nerdfonts.com/#home)
+* [ble.sh](https://github.com/akinomyoga/ble.sh)
