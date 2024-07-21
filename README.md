@@ -22,4 +22,5 @@ Note that despite this is a *dotfiles* repository, we won't be using '.' before 
 I haven't made up my mind yet about these features.
 
 * [Nerd fonts](https://www.nerdfonts.com/#home)
+* [Starship](https://starship.rs/)
 * [ble.sh](https://github.com/akinomyoga/ble.sh)
