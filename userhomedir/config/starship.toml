@@ -1,0 +1,391 @@
+# Default format 
+#format = """
+#$username\
+#$hostname\
+#$localip\
+#$shlvl\
+#$singularity\
+#$kubernetes\
+#$directory\
+#$vcsh\
+#$fossil_branch\
+#$fossil_metrics\
+#$git_branch\
+#$git_commit\
+#$git_state\
+#$git_metrics\
+#$git_status\
+#$hg_branch\
+#$pijul_channel\
+#$docker_context\
+#$package\
+#$c\
+#$cmake\
+#$cobol\
+#$daml\
+#$dart\
+#$deno\
+#$dotnet\
+#$elixir\
+#$elm\
+#$erlang\
+#$fennel\
+#$gleam\
+#$golang\
+#$guix_shell\
+#$haskell\
+#$haxe\
+#$helm\
+#$java\
+#$julia\
+#$kotlin\
+#$gradle\
+#$lua\
+#$nim\
+#$nodejs\
+#$ocaml\
+#$opa\
+#$perl\
+#$php\
+#$pulumi\
+#$purescript\
+#$python\
+#$quarto\
+#$raku\
+#$rlang\
+#$red\
+#$ruby\
+#$rust\
+#$scala\
+#$solidity\
+#$swift\
+#$terraform\
+#$typst\
+#$vlang\
+#$vagrant\
+#$zig\
+#$buf\
+#$nix_shell\
+#$conda\
+#$meson\
+#$spack\
+#$memory_usage\
+#$aws\
+#$gcloud\
+#$openstack\
+#$azure\
+#$nats\
+#$direnv\
+#$env_var\
+#$crystal\
+#$custom\
+#$sudo\
+#$cmd_duration\
+#$line_break\
+#$jobs\
+#$battery\
+#$time\
+#$status\
+#$os\
+#$container\
+#$shell\
+#$character"""
+
+format = """
+$sudo\
+$all\
+$custom
+"""
+
+right_format = """
+$cmd_duration\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$time\
+$battery\
+"""
+
+# Some symbols dictionary to quick copy paste
+#[]
+#[]
+#[☭]
+#[]
+#[]
+#[🌐]
+#[]
+#[]
+#[🖕]
+#[⻲]
+#[魔]
+#[ ]
+#     
+#      
+#     
+# 
+#   
+
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = false 
+#add_newline = true 
+
+# Modules
+# https://starship.rs/config/#battery
+# TODO-oscar: crear más intervalos donde el color se hace cada vez más visible en cada salto
+# Default values
+[battery]
+format = '[ $percentage$symbol]($style)'
+full_symbol = '🔋'
+charging_symbol = '⚡️'
+discharging_symbol = '󰂃'
+#discharging_symbol = '💀'
+disabled = false
+
+# TODO-oscar: try to change this ugly symbol
+[[battery.display]]
+threshold = 80
+discharging_symbol = '󰂃'
+style = '#404040 italic'
+
+[[battery.display]]
+threshold = 70
+discharging_symbol = '󰂃'
+style = '#808080 italic'
+
+[[battery.display]]
+threshold = 60
+discharging_symbol = '󰂃'
+style = '#A0A0A0 italic'
+
+[[battery.display]]
+threshold = 50
+discharging_symbol = '󰂃'
+style = '#C0C0C0 italic'
+
+[[battery.display]]
+threshold = 40
+discharging_symbol = '󰂃'
+style = '#E0E0E0 italic'
+
+[[battery.display]]
+threshold = 30
+discharging_symbol = '💀'
+style = 'bold red blink'
+
+
+# https://starship.rs/config/#character
+# Replace the '❯' symbol in the prompt with '➜'
+[character] # The name of the module we are configuring is 'character'
+#success_symbol = '[➜](bold green blink)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+#success_symbol = '[☭](bold red)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+#error_symbol = '[✗](bold red) '
+error_symbol = '[🖕](bold red) '
+disabled = true
+
+# https://starship.rs/config/#command-duration
+[cmd_duration]
+min_time = 10000
+show_notifications = false 
+
+# TODO-oscar: add symbol translation
+# https://starship.rs/config/#directory
+[directory]
+format = '[$path]($style)'
+style = 'bold cyan'
+read_only_style = 'bold red'
+disabled = false
+# truncation_symbol = '' # Disabled since we now can see it right prompt
+
+# TODO-oscar: add symbol translation for:
+# - /tmp
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+#"Videos" = "📽 "
+"Videos" = "🎞 "
+"devel" = " "
+
+# https://starship.rs/config/#git-branch
+[git_branch]
+truncation_symbol = '...'
+style = 'purple bold'
+format = '[$symbol$branch]($style)'
+#symbol = '' 
+#symbol = '' 
+symbol = ' ' 
+disabled = false
+#       
+#      
+#    
+
+# https: //starship.rs/config/#git-state
+[git_state]
+style = 'red'
+#format = '[\($state( $progress_current of $progress_total)\)]($style) '
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = '[🍒 PICKING](bold red)'
+disabled = false
+
+# TODO-oscar: cambiar estos iconos
+# https://starship.rs/config/#git-status
+[git_status]
+format = ' ([$all_status]($style) )'
+conflicted = '🏳'
+ahead = '⤒'
+behind = '⤓'
+diverged = '😵'
+up_to_date = '[🗹](green)'
+untracked = '[🗁](purple bold) '
+#stashed = '📦'
+stashed = '[🖫 ](grey)'  # TODO-oscar: cambiar este signo
+modified = '[🖉](#FFCC00) '
+staged = '[\($count\)](bright-blue)'
+renamed = ''
+deleted = '[🗴](red bold)'
+style = '#A0A0A0 bold'
+
+# https://starship.rs/config/#hostname
+# TODO-oscar: combine with module username to use a @ when local and ssh symbol when not
+[hostname]
+ssh_only = true
+#ssh_symbol = '🌐'
+#ssh_symbol = ''
+ssh_symbol = ''
+style = 'bold #FFFF00'
+format = '[$ssh_symbol$hostname]($style)'
+
+# https://tarship.rs/config/#jobs
+[jobs]
+disabled = true
+
+# https://starship.rs/config/#kubernetes
+# TODO-oscar: kubernetes module should be here
+
+# https://starship.rs/config/#line-break
+[line_break]
+disabled = true
+
+# https://starship.rs/config/#local-ip
+[localip]
+disabled = true
+
+# https://.rs/config/#memory-usagep
+# TODO-oscar: maybe is a good idea to use memory in the right-prompt
+[memory_usage]
+disabled = true
+threshold = -1
+symbol = ' '
+style = 'bold dimmed green'
+
+[os]
+disabled = true 
+format = "[$symbol]($style) "
+style = 'bold red'
+
+# TODO-oscar: use proper symbols
+# TODO-oscar: explore use distro symbol as ssh_symbol
+[os.symbols]
+Arch = "󰣇"
+Debian = "󰣚"
+#Steam = ""
+#Steam = ""
+#Steam = ""
+#Ubuntu = ""
+Ubuntu = ""
+
+
+######################################################
+# Programming languages prompt
+[golang]
+disabled = true
+
+# https://starship.rs/config/#java
+[java]
+disabled = true 
+
+# https://starship.rs/config/#python
+[python]
+#format = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+format = '[${symbol}]($style)'
+
+# https://starship.rs/config/#ruby
+[ruby]
+format = '[$symbol]($style)'
+style = "red bold"
+symbol = ' '
+
+# https://starship.rs/config/#rust
+[rust]
+
+# https://starship.rs/config/#vagrant 
+[vagrant]
+# version_format 'v'
+format = '[$symbol]($style) '
+#style = "bold bright-blue"
+style = "bold blue"
+symbol = ''
+
+######################################################
+
+# https://starship.rs/config/#shell
+# TODO-oscar: check if shell symbol can be show only if not bash
+# TODO-oscar: another option is to change end prompt symbol in every different shell.
+#             problem is this option should take into account dotfiles for every shell
+# TODO-oscar: what about a prompt symbol that changes every time? not an V from vagrant after an arrow but only the V or only the symbol
+[shell]
+disabled = true
+#style = '#00DE00'
+style = '#FFDD00'
+#bash_indicator = "➜"
+#bash_indicator = "☭ "
+bash_indicator = "⻲"
+format = '[$indicator]($style)'
+zsh_indicator = ">"
+
+# https://starship.rs/config/#sudo
+[sudo]
+disabled = true 
+symbol = '🧙 '
+#symbol = '魔'
+format = '[$symbol](style)'
+
+# https://starship.rs/config/#time
+[time]
+disabled = false
+#format = '[](red)[$time]($style)[](red)'
+#style = 'bg:red fg:#DDDDDD'
+format = '[$time]($style)'
+style = '#666666 dimmed'
+#time_format = '%H:%M' 
+time_format = '%d/%m/%y %H:%M' 
+
+# https://starship.rs/config/#username
+[username]
+disabled = false 
+show_always = false
+style_user = "bright-blue dimmed"
+style_root = "bold red"
+format = '[$user]($style)'
+
+[custom.piccolo]
+command = 'echo 魔' # shows output of command
+when = ''' test "$USER" = "root" '''
+disabled = false
+format = '[$symbol($output)]($style)'
+#shell = '~/.config/piccolo.sh'
+style = "fg:#FF55AA"
+
+[custom.oscar]
+command = 'echo ⻲' # shows output of command
+when = ''' test "$USER" = "oscar" '''
+disabled = false
+format = '[$symbol($output)]($style)'
+#shell = '~/.config/piccolo.sh'
+style = "fg:#FFCC00"
