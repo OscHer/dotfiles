@@ -98,6 +98,7 @@ $custom
 """
 
 right_format = """
+$vagrant\
 $cmd_duration\
 $git_branch\
 $git_commit\
@@ -126,6 +127,7 @@ $battery\
 #     
 # 
 #   
+# 
 
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
@@ -146,26 +148,10 @@ discharging_symbol = '󰂃'
 #discharging_symbol = '💀'
 disabled = false
 
-# TODO-oscar: try to change this ugly symbol
 [[battery.display]]
-threshold = 80
-discharging_symbol = '󰂃'
-style = '#404040 italic'
-
-[[battery.display]]
-threshold = 70
-discharging_symbol = '󰂃'
-style = '#808080 italic'
-
-[[battery.display]]
-threshold = 60
-discharging_symbol = '󰂃'
-style = '#A0A0A0 italic'
-
-[[battery.display]]
-threshold = 50
-discharging_symbol = '󰂃'
-style = '#C0C0C0 italic'
+threshold = 30
+discharging_symbol = '💀'
+style = 'bold red blink'
 
 [[battery.display]]
 threshold = 40
@@ -173,9 +159,30 @@ discharging_symbol = '󰂃'
 style = '#E0E0E0 italic'
 
 [[battery.display]]
-threshold = 30
-discharging_symbol = '💀'
-style = 'bold red blink'
+threshold = 50
+discharging_symbol = '󰂃'
+style = '#C0C0C0 italic'
+
+[[battery.display]]
+threshold = 60
+discharging_symbol = '󰂃'
+style = '#A0A0A0 italic'
+
+[[battery.display]]
+threshold = 70
+discharging_symbol = '󰂃'
+style = '#808080 italic'
+
+# TODO-oscar: try to change this ugly symbol
+[[battery.display]]
+threshold = 80
+discharging_symbol = '󰂃'
+style = '#404040 italic'
+
+
+
+
+
 
 
 # https://starship.rs/config/#character
@@ -210,15 +217,13 @@ disabled = false
 "Pictures" = " "
 #"Videos" = "📽 "
 "Videos" = "🎞 "
-"devel" = " "
+"devel" = " "
 
 # https://starship.rs/config/#git-branch
 [git_branch]
 truncation_symbol = '...'
-style = 'purple bold'
-format = '[$symbol$branch]($style)'
-#symbol = '' 
-#symbol = '' 
+style = 'bold bg:#FF1111 fg:#FFFFFF italic'
+format = '[](bg:#000000 fg:#FF0000)[ $symbol](bg:#FF0000)[$branch](bold bg:#FF0000)[█▓▒░](bold bg:#000000 fg:#FF0000)'
 symbol = ' ' 
 disabled = false
 #       
@@ -236,15 +241,15 @@ disabled = false
 # TODO-oscar: cambiar estos iconos
 # https://starship.rs/config/#git-status
 [git_status]
-format = ' ([$all_status]($style) )'
+format = '([\[$all_status$ahead_behind\]]($style)) '
 conflicted = '🏳'
 ahead = '⤒'
 behind = '⤓'
 diverged = '😵'
-up_to_date = '[🗹](green)'
-untracked = '[🗁](purple bold) '
-#stashed = '📦'
-stashed = '[🖫 ](grey)'  # TODO-oscar: cambiar este signo
+up_to_date = '[🗹 ](#00FF00 bold)' # Los corchetes son para poder aplicar $style que viene después
+untracked = '[🗁 ](purple bold)'
+stashed = '📦'
+#stashed = '[🖫 ](grey)'  # TODO-oscar: cambiar este signo
 modified = '[🖉](#FFCC00) '
 staged = '[\($count\)](bright-blue)'
 renamed = ''
@@ -256,8 +261,8 @@ style = '#A0A0A0 bold'
 [hostname]
 ssh_only = true
 #ssh_symbol = '🌐'
-#ssh_symbol = ''
-ssh_symbol = ''
+ssh_symbol = ''
+#ssh_symbol = ''
 style = 'bold #FFFF00'
 format = '[$ssh_symbol$hostname]($style)'
 
@@ -389,3 +394,10 @@ disabled = false
 format = '[$symbol($output)]($style)'
 #shell = '~/.config/piccolo.sh'
 style = "fg:#FFCC00"
+
+[custom.hcl]
+disabled = true
+detect_extensions = ['hcl']
+require_repo = true
+description = "Tell  me if we're in a Packer coding repo directory"
+symbol = "🗃" 
