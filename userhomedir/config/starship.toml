@@ -243,8 +243,8 @@ disabled = false
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style)) '
 conflicted = '🏳'
-ahead = '⤒'
-behind = '⤓'
+ahead = '[⮭](bright-red)'
+behind = '[⮯](bright-red)'
 diverged = '😵'
 up_to_date = '[🗹 ](#00FF00 bold)' # Los corchetes son para poder aplicar $style que viene después
 untracked = '[🗁 ](purple bold)'
