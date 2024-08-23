@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+
+######################################################################
+# @author      : Óscar Heredia (65867332+OscHer@users.noreply.github.com)
+# @file        : vagrant_alias.sh
+# @created     : viernes ago 23, 2024 11:10:25 CEST
+#
+# @description : Sourceable file with some useful vagrant aliases and
+#                environment variables 
+######################################################################
+
+# Vagrant env vars
+
+
+# Vagrant aliases
+# https://developer.hashicorp.com/vagrant/docs/cli/aliases
+coie = !destroy -f && vagrant up --provision
+metrics = !ps aux | grep "[V]BoxHeadless" | grep $(cat .vagrant/machines/default/virtualbox/id) | awk '{ printf("CPU: %.02f%%, Memory: %.02f%%", $3, $4) }'
+stop = halt
+
+
