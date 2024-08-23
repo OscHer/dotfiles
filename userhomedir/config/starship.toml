@@ -98,14 +98,16 @@ $custom
 """
 
 right_format = """
-$vagrant\
+$vagrant
+${custom.ansible}\
+${custom.hcl}\
 $cmd_duration\
 $git_branch\
 $git_commit\
 $git_state\
 $git_metrics\
 $git_status\
-$time\
+$time
 $battery\
 """
 
@@ -128,6 +130,7 @@ $battery\
 # 
 #   
 # 
+# 󱂚
 
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
@@ -223,7 +226,7 @@ disabled = false
 [git_branch]
 truncation_symbol = '...'
 style = 'bold bg:#FF1111 fg:#FFFFFF italic'
-format = '[](bg:#000000 fg:#FF0000)[ $symbol](bg:#FF0000)[$branch](bold bg:#FF0000)[█▓▒░](bold bg:#000000 fg:#FF0000)'
+format = '[](bg:#000000 fg:#FF0000)[$symbol](bg:#FF0000)[$branch](bold bg:#FF0000)[█▓▒░](bold bg:#000000 fg:#FF0000)'
 symbol = ' ' 
 disabled = false
 #       
@@ -241,7 +244,8 @@ disabled = false
 # TODO-oscar: cambiar estos iconos
 # https://starship.rs/config/#git-status
 [git_status]
-format = '([\[$all_status$ahead_behind\]]($style)) '
+#format = '([\[$all_status$ahead_behind\]]($style)) '
+format = '([$all_status$ahead_behind]($style)) '
 conflicted = '🏳'
 ahead = '[⮭](bright-red)'
 behind = '[⮯](bright-red)'
@@ -254,7 +258,7 @@ modified = '[🖉](#FFCC00) '
 staged = '[\($count\)](bright-blue)'
 renamed = ''
 deleted = '[🗴](red bold)'
-style = '#A0A0A0 bold'
+style = '#FFBB22 bold'
 
 # https://starship.rs/config/#hostname
 # TODO-oscar: combine with module username to use a @ when local and ssh symbol when not
@@ -332,7 +336,7 @@ symbol = ' '
 # https://starship.rs/config/#vagrant 
 [vagrant]
 # version_format 'v'
-format = '[$symbol]($style) '
+format = '[$symbol]($style)$line_break '
 #style = "bold bright-blue"
 style = "bold blue"
 symbol = ''
@@ -401,3 +405,9 @@ detect_extensions = ['hcl']
 require_repo = true
 description = "Tell  me if we're in a Packer coding repo directory"
 symbol = "🗃" 
+
+[custom.ansible]
+disabled = false
+detect_files = ["playbook.yml", "inventory.yml"]
+symbol = "󱂚 "
+style = "#DDDDDD"
