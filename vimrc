@@ -27,10 +27,9 @@
 "F2    Press F2 to invoque Pydocstring over the current buffer
 
 " Markdown preview
-" <C-s> <Plug>MarkdownPreview
-" <M-s> <Plug>MarkdownPreviewStop
-" <C-p> <Plug>MarkdownPreviewToggle
-
+"<C-s> <Plug>MarkdownPreview
+"<M-s> <Plug>MarkdownPreviewStop
+"<C-p> <Plug>MarkdownPreviewToggle
 
 
 
@@ -60,7 +59,9 @@ Plugin 'python-mode/python-mode'            "A bunch of cool features for python
 Plugin 'iamcco/markdown-preview.nvim'       "Creates a local webserver with markdown rendering in realtime. https://github.com/iamcco/markdown-preview.nvim
 Plugin 'ironcamel/vim-script-runner', {'for': ['sh', 'python']} "Executes a script on another buffer. https://atareao.es/tutorial/vim/bash-con-vim/
 Plugin 'tpope/vim-rhubarb'                  "When typing GBrowse in a git directory opens github project in your web browser. https://github.com/tpope/vim-rhubarb
-Plugin 'tibabit/vim-templates'              "Templates for code files with its placeholders and so on. https://github.com/tibabit/vim-templates
+Plugin 'tibabit/vim-templates'              "Templates for code files with its placeholders and so on. https://github.com/tibabit/vim-templates Plugin 'tibabit/vim-templates'              "Templates for code files with its placeholders and so on. https://github.com/tibabit/vim-templates
+Plugin 'ycm-core/YouCompleteMe'             "Auto completion server-client plugin
+Plugin 'hashivim/vim-vagrant'             "Auto completion server-client plugin
 
 call vundle#end()
 filetype plugin indent on
@@ -91,12 +92,13 @@ set relativenumber            " Relative line number; let's give it a try
 set spelllang=devel,en,es     " Dictionaries used for spell checking. " Dictionaries used for spell checking. 'devel' is a self-made dictionary in order to avoid false triggers on IT jargon tech such as ansible, Vagrantfile, Dockerfile, github and the like
 set spell                     " Enable spell check by default
 set spellsuggest=8            " Show at most 8 suggestions for misspelled words
+
 hi clear SpellBad
 hi SpellBad ctermbg=blue
 
 " General keyboard mappings
 nnoremap <C-l> :set rnu!<CR>                          " Toggle relative and absolute line number
-nnoremap <leader>b :new \| r ! grep -Rns '\# TODO: ' *<CR>   " Create a backlog buffer and open it for editing
+nnoremap <leader>b :new \| r ! grep -ERns '\#[ ]?TODO(\-.*)?:' <CR>   " Create a backlog buffer and open it for editing
 nnoremap <CR> :noh<CR>                                " Unset last search pattern just hitting return
 nnoremap <Tab> :bNext<CR>                             " Go to next buffer
 nnoremap <S-Tab> :bprevious<CR>                       " Go to previous buffer
@@ -143,10 +145,8 @@ if !exists('g:airline_symbols')
     endif
 
 " unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
+"let g:airline_left_sep = '▶'
+"let g:airline_right_sep = '◀'
 let g:airline_symbols.crypt = '🔒'
 let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.linenr = '␊'
@@ -172,12 +172,18 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.maxlinenr = ''
 
+"     
+"      
+"     
+" 
+
+
 " airline features on/off
 let g:airline#extensions#tabline#enabled = 1 "Show buffer name
 let g:airline#extensions#tabline#buffer_nr_show = 1 "Show buffer number before buffer name
 
 " NERDTree
-autocmd VimEnter * NERDTree       " Enable NERDTree on startup
+"autocmd VimEnter * NERDTree       " Enable NERDTree on startup
 autocmd VimEnter * wincmd p       " Change windows focus from NERDTree to main window
 "let g:NERDTreeWinPos = "right"   " Position NERDTree at the right edge of the screen by default
 let NERDTreeShowHidden=1          " Show hidden files in the file explorer by default
@@ -196,16 +202,17 @@ let g:indentLine_defaultGroup = 'SpecialKey'
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 "vim-yaml-folds
-set foldlevelstart=3
+set foldlevelstart=5
 set omnifunc=syntaxcomplete#Complete
 nnoremap <Space> za
 
 " JSON editor syntax
-"let g:vim_json_conceal = 0
+let g:vim_json_conceal = 0
 setlocal foldmethod=syntax
+"setlocal foldmethod=indent
 
 " Python mode
-"let g:pymode_python = 'python3'
+let g:pymode_python = 'python3'
 
 " Pydocstring
 let g:pydocstring_doq_path = "~/.local/bin/doq"
@@ -236,5 +243,8 @@ let g:mkdp_browser = '/usr/bin/firefox'
 let g:mkdp_echo_preview_url = 0
 
 " vim-templates placeholder configuration 
+" https://github.com/tibabit/vim-templates
 let g:tmpl_author_email = '65867332+OscHer@users.noreply.github.com'
+let g:tmpl_author_name = 'Óscar Heredia'
+let g:tmpl_author_company = 'Trebolinux'
 
