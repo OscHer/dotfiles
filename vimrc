@@ -98,7 +98,7 @@ hi SpellBad ctermbg=blue
 
 " General keyboard mappings
 nnoremap <C-l> :set rnu!<CR>                          " Toggle relative and absolute line number
-nnoremap <leader>b :new \| r ! grep -ERns '\#[ ]?TODO(\-.*)?:' <CR>   " Create a backlog buffer and open it for editing
+nnoremap <leader>b :new \| r ! grep -Erns '\#[ ]?TODO(\-.*)?:' <CR>   " Create a backlog buffer and open it for editing
 nnoremap <CR> :noh<CR>                                " Unset last search pattern just hitting return
 nnoremap <Tab> :bNext<CR>                             " Go to next buffer
 nnoremap <S-Tab> :bprevious<CR>                       " Go to previous buffer
